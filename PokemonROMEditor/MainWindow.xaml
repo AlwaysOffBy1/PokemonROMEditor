@@ -1,0 +1,81 @@
+﻿<Window x:Class="PokemonROMEditor.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PokemonROMEditor"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="387.6" Width="755.4">
+    <Grid>
+
+        <DockPanel>
+            <Menu DockPanel.Dock="Top" Height="20" Margin="0,0,0.2,0">
+                <MenuItem Header="_File">
+                    <MenuItem Header="_Open"/>
+                    <MenuItem Header="_Close"/>
+                    <MenuItem Header="_Save"/>
+                </MenuItem>
+            </Menu>
+            <StackPanel>
+                <StackPanel.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="Black" Offset="1"/>
+                        <GradientStop Color="#FF2F2F2F"/>
+                    </LinearGradientBrush>
+                </StackPanel.Background>
+            </StackPanel>
+        </DockPanel>
+        <ListBox
+            ItemsSource="{Binding Path=VanillaList}"
+            DisplayMemberPath="Name" HorizontalAlignment="Left" Height="291" Margin="10,57,0,0" VerticalAlignment="Top" Width="178"/>
+        <TextBox Text="{Binding CurrentVanilla.Name}" x:Name="tb_Pokemon" HorizontalAlignment="Left" Height="25" Margin="63,27,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="125" TextChanged="tb_pokemon_TextChanged"/>
+        <TabControl HorizontalAlignment="Left" Height="308" Margin="193,40,0,0" VerticalAlignment="Top" Width="547">
+            <TabItem Header="Stats">
+                <Grid Background="#000000">
+                    <Label x:Name="lbl_H" Content="Health" HorizontalAlignment="Left" Height="26" Margin="10,41,0,0" VerticalAlignment="Top" Width="86" Foreground="Red" HorizontalContentAlignment="Right" FontWeight="Bold" BorderBrush="Red" BorderThickness="0,0,2,0"/>
+                    <Label x:Name="lbl_A" Content="Attack" HorizontalAlignment="Left" Height="26" Margin="10,72,0,0" VerticalAlignment="Top" Width="86" Foreground="#FFB38C28" HorizontalContentAlignment="Right" FontWeight="Bold" BorderBrush="#FFB38C28" BorderThickness="0,0,2,0"/>
+                    <Label x:Name="lbl_D" Content="Defense" HorizontalAlignment="Left" Height="26" Margin="10,103,0,0" VerticalAlignment="Top" Width="86" Foreground="#FF797979" HorizontalContentAlignment="Right" FontWeight="Bold" BorderBrush="#FF797979" BorderThickness="0,0,2,0"/>
+                    <Label x:Name="lbl_Sa" Content="Sp. Atatck" HorizontalAlignment="Left" Height="26" Margin="10,134,0,0" VerticalAlignment="Top" Width="86" Foreground="#FFC800E2" HorizontalContentAlignment="Right" FontWeight="Bold" BorderBrush="#FFC800E2" BorderThickness="0,0,2,0"/>
+                    <Label x:Name="lbl_Sd" Content="Sp. Defense" HorizontalAlignment="Left" Height="26" Margin="10,165,0,0" VerticalAlignment="Top" Width="86" Foreground="#FF00B1FF" HorizontalContentAlignment="Right" FontWeight="Bold" BorderBrush="#FF00B1FF" BorderThickness="0,0,2,0"/>
+                    <Label x:Name="lbl_Sp" Content="Speed" HorizontalAlignment="Left" Height="26" Margin="10,196,0,0" VerticalAlignment="Top" Width="86" Foreground="#FFD6CF00" HorizontalContentAlignment="Right" FontWeight="Bold" BorderBrush="#FFD6CF00" BorderThickness="0,0,2,0"/>
+                    <Label x:Name="lbl_T" Content="Total" HorizontalAlignment="Left" Height="34" Margin="10,227,0,0" VerticalAlignment="Top" Width="86" Foreground="White" HorizontalContentAlignment="Right" FontWeight="Bold" BorderBrush="White" BorderThickness="0,0,2,0" VerticalContentAlignment="Center"/>
+                    <Label x:Name="lbl_healthBar"  HorizontalAlignment="Left" Height="17" Margin="216,41,0,0" VerticalAlignment="Top" Width="255" HorizontalContentAlignment="Right" FontWeight="Bold" Background="Red" BorderThickness="0"/>
+                    <Label x:Name="lbl_attackBar"  HorizontalAlignment="Left" Height="17" Margin="216,72,0,0" VerticalAlignment="Top" Width="255" HorizontalContentAlignment="Right" FontWeight="Bold" Background="#FFB38C28" BorderThickness="0"/>
+                    <Label x:Name="lbl_defenseBar"  HorizontalAlignment="Left" Height="17" Margin="216,103,0,0" VerticalAlignment="Top" Width="255" HorizontalContentAlignment="Right" FontWeight="Bold" Background="#FF797979" BorderThickness="0"/>
+                    <Label x:Name="lbl_specialattBar"  HorizontalAlignment="Left" Height="17" Margin="216,134,0,0" VerticalAlignment="Top" Width="255" HorizontalContentAlignment="Right" FontWeight="Bold" Background="#FFC800E2" BorderThickness="0"/>
+                    <Label x:Name="lbl_specialdefBar"  HorizontalAlignment="Left" Height="17" Margin="216,165,0,0" VerticalAlignment="Top" Width="255" HorizontalContentAlignment="Right" FontWeight="Bold" Background="#FF00B1FF" BorderThickness="0"/>
+                    <Label x:Name="lbl_speedBar"  HorizontalAlignment="Left" Height="17" Margin="216,196,0,0" VerticalAlignment="Top" Width="255" HorizontalContentAlignment="Right" FontWeight="Bold" Background="#FFD6CF00" BorderThickness="0"/>
+                    <Label x:Name="lbl_totalBar"  HorizontalAlignment="Left" Height="21" Margin="216,227,0,0" VerticalAlignment="Top" Width="255" HorizontalContentAlignment="Right" FontWeight="Bold" Background="White" BorderThickness="0"/>
+                    <Label x:Name="lbl_healthBarV"  HorizontalAlignment="Left" Height="10" Margin="216,58,0,0" VerticalAlignment="Top" Width="255" HorizontalContentAlignment="Right" FontWeight="Bold" Background="#FFFF6464" BorderThickness="0"/>
+                    <Label x:Name="lbl_attackBarV"  HorizontalAlignment="Left" Height="10" Margin="216,88,0,0" VerticalAlignment="Top" Width="255" HorizontalContentAlignment="Right" FontWeight="Bold" Background="#FFB49F69" BorderThickness="0"/>
+                    <Label x:Name="lbl_defenseBarV"  HorizontalAlignment="Left" Height="10" Margin="216,119,0,0" VerticalAlignment="Top" Width="255" HorizontalContentAlignment="Right" FontWeight="Bold" Background="#FFB3B3B3" BorderThickness="0"/>
+                    <Label x:Name="lbl_specialattBarV"  HorizontalAlignment="Left" Height="10" Margin="216,150,0,0" VerticalAlignment="Top" Width="255" HorizontalContentAlignment="Right" FontWeight="Bold" Background="#FFD26FDF" BorderThickness="0"/>
+                    <Label x:Name="lbl_specialdefV"  HorizontalAlignment="Left" Height="10" Margin="216,181,0,0" VerticalAlignment="Top" Width="255" HorizontalContentAlignment="Right" FontWeight="Bold" Background="#FF7BD7FF" BorderThickness="0"/>
+                    <Label x:Name="lbl_speedBarV"  HorizontalAlignment="Left" Height="10" Margin="216,212,0,0" VerticalAlignment="Top" Width="255" HorizontalContentAlignment="Right" FontWeight="Bold" Background="#FFD7D468" BorderThickness="0"/>
+                    <Label x:Name="lbl_totalBarV"  HorizontalAlignment="Left" Height="13" Margin="216,248,0,0" VerticalAlignment="Top" Width="255" HorizontalContentAlignment="Right" FontWeight="Bold" Background="#FF999999" BorderThickness="0" BorderBrush="White"/>
+                    <Label x:Name="label1" Content="Vanilla" HorizontalAlignment="Left" Height="31" Margin="96,10,0,0" VerticalAlignment="Top" Width="65" Foreground="White" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontFamily="Arial" FontSize="14" FontWeight="Bold" BorderBrush="White"/>
+                    <Label x:Name="label1_Copy" Content="Edited" HorizontalAlignment="Left" Height="31" Margin="161,10,0,0" VerticalAlignment="Top" Width="60" Foreground="White" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontFamily="Arial" FontSize="14" FontWeight="Bold"/>
+                    <TextBox x:Name="tb_healthV" Text="{Binding Path=CurrentVanilla.Health}" HorizontalAlignment="Left" Height="26" Margin="101,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="14" Background="Red" BorderThickness="2" FontWeight="Bold" BorderBrush="Black"/>
+                    <TextBox x:Name="tb_health" Text="{Binding Path=CurrentPokemon.Health}" HorizontalAlignment="Left" Height="26" Margin="161,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="14" Background="Red" BorderThickness="2,1,1,1" FontWeight="Bold" BorderBrush="Black" TextChanged="TextBoxChanged" Tag="0"/>
+                    <TextBox x:Name="tb_attackV" Text="{Binding Path=CurrentVanilla.Attack}" HorizontalAlignment="Left" Height="26" Margin="101,72,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="55" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="14" IsEnabled="False" Background="#FFB38C28" BorderThickness="2" FontWeight="Bold" BorderBrush="Black"/>
+                    <TextBox x:Name="tb_attack" Text="{Binding Path=CurrentPokemon.Attack}" HorizontalAlignment="Left" Height="26" Margin="161,72,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="14" Background="#FFB38C28" BorderThickness="2" FontWeight="Bold" BorderBrush="Black" TextChanged="TextBoxChanged" Tag="1"/>
+                    <TextBox x:Name="tb_defenseV" Text="{Binding Path=CurrentVanilla.Defense}" HorizontalAlignment="Left" Height="26" Margin="101,103,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="14" IsEnabled="False" Background="#FF797979" BorderThickness="2" FontWeight="Bold" BorderBrush="Black"/>
+                    <TextBox x:Name="tb_defense" Text="{Binding Path=CurrentPokemon.Defense}" HorizontalAlignment="Left" Height="26" Margin="161,103,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="14" Background="#FF797979" BorderThickness="2" FontWeight="Bold" BorderBrush="Black" TextChanged="TextBoxChanged" Tag="2"/>
+                    <TextBox x:Name="tb_specialattackV" Text="{Binding Path=CurrentVanilla.SpecialAttack}" HorizontalAlignment="Left" Height="26" Margin="101,134,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="55" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="14" IsEnabled="False" Background="#FFC800E2" BorderThickness="2" FontWeight="Bold" BorderBrush="Black"/>
+                    <TextBox x:Name="tb_Specialattack" Text="{Binding Path=CurrentPokemon.SpecialAttack}" HorizontalAlignment="Left" Height="26" Margin="161,134,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="14" Background="#FFC800E2" BorderThickness="2" FontWeight="Bold" BorderBrush="Black" TextChanged="TextBoxChanged" Tag="3"/>
+                    <TextBox x:Name="tb_SpecialDefenseV" Text="{Binding Path=CurrentVanilla.SpecialDefense}" HorizontalAlignment="Left" Height="26" Margin="101,165,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="55" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="14" IsEnabled="False" Background="#FF00B1FF" BorderThickness="2" FontWeight="Bold" BorderBrush="Black"/>
+                    <TextBox x:Name="tb_Specialdefense" Text="{Binding Path=CurrentPokemon.SpecialDefense}" HorizontalAlignment="Left" Height="26" Margin="161,165,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="55" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="14" Background="#FF00B1FF" BorderThickness="2" FontWeight="Bold" BorderBrush="Black" TextChanged="TextBoxChanged" Tag="4"/>
+                    <TextBox x:Name="tb_speedV" Text="{Binding Path=CurrentVanilla.Speed}" HorizontalAlignment="Left" Height="26" Margin="101,196,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="55" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="14" IsEnabled="False" Background="#FFD6CF00" BorderThickness="2" FontWeight="Bold" BorderBrush="Black"/>
+                    <TextBox x:Name="tb_speed" Text="{Binding Path=CurrentPokemon.Speed}" HorizontalAlignment="Left" Height="26" Margin="161,196,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="14" Background="#FFD6CF00" BorderThickness="2" FontWeight="Bold" BorderBrush="Black" TextChanged="TextBoxChanged" Tag="5"/>
+                    <TextBox x:Name="tb_totalV" Text="{Binding Path=CurrentVanilla.Total}" HorizontalAlignment="Left" Height="26" Margin="101,230,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="55" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="14" IsEnabled="False" Background="White" BorderThickness="2" FontWeight="Bold" BorderBrush="Black"/>
+                    <TextBox x:Name="tb_total" Text="{Binding Path=CurrentPokemon.Total}" HorizontalAlignment="Left" Height="26" Margin="161,230,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="55" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="14" Background="White" BorderThickness="2" FontWeight="Bold" BorderBrush="Black" IsEnabled="False" TextChanged="TextBoxChanged" Tag="6"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Other">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+        </TabControl>
+        <Label Content="{Binding CurrentVanilla.Number}" HorizontalAlignment="Left"  Height="26" Margin="10,26,0,0" VerticalAlignment="Top" Width="53" Padding="0,5,2,0" Foreground="White" FontWeight="Bold"/>
+
+    </Grid>
+</Window>
